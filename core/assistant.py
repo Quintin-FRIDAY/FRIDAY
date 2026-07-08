@@ -16,3 +16,11 @@ class Friday:
 
     def shutdown(self):
         log("Shutting down...")
+
+    def introduce(self):
+        print()
+        print("Hello.")
+        print("I am F.R.I.D.A.Y.")
+        print("Your personal artificial intelligence assistant.")
+        print("All systems are functioning normally.")
+        print()
