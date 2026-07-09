@@ -1,7 +1,7 @@
 from ollama import chat
 
 
-class AI:
+class AIEngine:
 
     def __init__(self, model="gemma3:4b"):
         self.model = model

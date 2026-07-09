@@ -1,5 +1,4 @@
 from core.assistant import Friday
-from core.commands import process
 from core.brain import Brain
 
 
@@ -17,10 +16,7 @@ def main():
             friday.shutdown()
             break
 
-        response = process(command)
-
-        if response == "I'm sorry, I don't know how to do that yet.":
-            response = brain.think(command)
+        response = brain.process(command)
 
         print(f"\nF.R.I.D.A.Y. > {response}\n")
 

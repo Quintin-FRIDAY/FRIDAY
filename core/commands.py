@@ -8,11 +8,12 @@ SKILLS = [
     system,
 ]
 
-def process(command: str) -> str:
+
+def process(command: str):
     for skill in SKILLS:
         response = skill(command)
 
         if response:
             return response
 
-    return "I'm sorry, I don't know how to do that yet."
+    return None
