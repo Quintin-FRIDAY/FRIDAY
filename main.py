@@ -2,12 +2,14 @@ import traceback
 
 from core.assistant import Friday
 from core.brain import Brain
+from core.history import History
 from core.logger import log
 
 
 def main():
     friday = Friday()
     brain = Brain()
+    history = History()
 
     log("Application started.")
 
@@ -18,6 +20,7 @@ def main():
         command = input("You > ")
 
         log(f"User: {command}")
+        history.add("User", command)
 
         if command.lower() in ["exit", "quit", "shutdown"]:
             friday.shutdown()
@@ -28,6 +31,7 @@ def main():
             response = brain.process(command)
 
             log(f"F.R.I.D.A.Y.: {response}")
+            history.add("Assistant", response)
 
             print(f"\nF.R.I.D.A.Y. > {response}\n")
 

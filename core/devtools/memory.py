@@ -3,7 +3,7 @@ from core.memory import Memory
 memory = Memory()
 
 
-def process(command: str):
+def process_memory(command: str):
     if not command.startswith("/"):
         return None
 
