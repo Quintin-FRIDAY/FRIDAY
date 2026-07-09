@@ -16,3 +16,123 @@
 [2026-07-09 17:23:53] Systems online.
 [2026-07-09 17:23:53] Awaiting commands.
 [2026-07-09 17:25:22] Shutting down...
+[2026-07-09 18:05:17] [INFO] ==================================================
+[2026-07-09 18:05:17] [INFO] Starting F.R.I.D.A.Y.
+[2026-07-09 18:05:17] [INFO] Version 0.3.0
+[2026-07-09 18:05:17] [INFO] Systems online.
+[2026-07-09 18:05:17] [INFO] Awaiting commands.
+[2026-07-09 18:05:57] [INFO] Shutting down...
+[2026-07-09 18:17:30] [INFO] Application started.
+[2026-07-09 18:17:30] [INFO] ==================================================
+[2026-07-09 18:17:30] [INFO] Starting F.R.I.D.A.Y.
+[2026-07-09 18:17:30] [INFO] Version 0.3.0
+[2026-07-09 18:17:30] [INFO] Systems online.
+[2026-07-09 18:17:30] [INFO] Awaiting commands.
+[2026-07-09 18:17:36] [INFO] User: quit
+[2026-07-09 18:17:36] [INFO] Shutting down...
+[2026-07-09 18:17:36] [INFO] Application stopped.
+[2026-07-09 18:20:02] [INFO] Application started.
+[2026-07-09 18:20:02] [INFO] ==================================================
+[2026-07-09 18:20:02] [INFO] Starting F.R.I.D.A.Y.
+[2026-07-09 18:20:02] [INFO] Version 0.3.0
+[2026-07-09 18:20:02] [INFO] Systems online.
+[2026-07-09 18:20:02] [INFO] Awaiting commands.
+[2026-07-09 18:20:06] [INFO] User: weather
+[2026-07-09 18:20:16] [INFO] F.R.I.D.A.Y.: Please provide me with a location! I need to know where you are asking about the weather for. 😊 
+
+For example, you could tell me:
+
+*   "Weather in London"
+*   "Weather in New York City"
+*   "Weather in Paris, France"
+[2026-07-09 18:21:12] [INFO] User: quit
+[2026-07-09 18:21:12] [INFO] Shutting down...
+[2026-07-09 18:21:12] [INFO] Application stopped.
+[2026-07-09 18:21:26] [INFO] Application started.
+[2026-07-09 18:21:26] [INFO] ==================================================
+[2026-07-09 18:21:26] [INFO] Starting F.R.I.D.A.Y.
+[2026-07-09 18:21:26] [INFO] Version 0.3.0
+[2026-07-09 18:21:26] [INFO] Systems online.
+[2026-07-09 18:21:26] [INFO] Awaiting commands.
+[2026-07-09 18:21:30] [INFO] User: weather
+[2026-07-09 18:21:34] [INFO] F.R.I.D.A.Y.: Okay, let's get you the weather! To give you the most accurate information, I need to know **where** you are located. 😊
+
+Please tell me:
+
+*   **City and State/Country:** (e.g., "New York City, NY," or "London, UK") 
+
+Once you let me know your location, I can provide you with the current conditions, temperature, forecast, and more!
+[2026-07-09 18:21:55] [INFO] User: close
+[2026-07-09 18:21:57] [INFO] F.R.I.D.A.Y.: Okay! Goodbye for now. Feel free to reach out if you need anything in the future. 😊
+
+[2026-07-09 18:22:00] [INFO] User: quit
+[2026-07-09 18:22:00] [INFO] Shutting down...
+[2026-07-09 18:22:00] [INFO] Application stopped.
+[2026-07-09 18:28:17] [INFO] Application started.
+[2026-07-09 18:28:17] [INFO] ==================================================
+[2026-07-09 18:28:17] [INFO] Starting F.R.I.D.A.Y.
+[2026-07-09 18:28:17] [INFO] Version 0.3.0
+[2026-07-09 18:28:17] [INFO] Systems online.
+[2026-07-09 18:28:17] [INFO] Awaiting commands.
+[2026-07-09 18:28:23] [INFO] User: time
+[2026-07-09 18:28:23] [INFO] F.R.I.D.A.Y.: The current time is 18:28:23.
+[2026-07-09 18:28:26] [INFO] User: date
+[2026-07-09 18:28:26] [INFO] F.R.I.D.A.Y.: Today is Thursday, 09 July 2026.
+[2026-07-09 18:28:49] [INFO] User: microphone help
+[2026-07-09 18:29:24] [INFO] F.R.I.D.A.Y.: Okay, let's get you set up with your microphone! To give you the *best* help, I need a little more information. Let’s break this down into categories and figure out what you need:
+
+**1. What are you trying to do with the microphone?** (This is the most important question!)
+
+* **Voice Chat/Gaming:** Are you using it for Discord, Zoom, Teamspeak, or a specific game?
+* **Recording Audio:** Are you recording vocals for music, podcasts, streaming, or voiceovers? 
+* **Video Conferencing:** Just basic calls with family and friends?
+
+
+**2. What kind of microphone do you have (or are considering)?**
+
+* **USB Microphone:** These plug directly into your computer. They’re often easier to set up. Examples: Blue Yeti, Rode NT-USB Mini, Fifine K669B
+* **XLR Microphone:** These require an audio interface or mixer to connect to your computer. Generally offer higher quality but are more complex.  Examples: Shure SM58, Rode NT1
+* **Headset Microphone:** Built into a headset, typically used for gaming or video calls. Examples: HyperX Cloud Alpha, Logitech G733
+
+**3. What's your current setup?** (Please tell me as much detail as possible)
+
+* **Operating System:** Windows 10/11, macOS (version?), Linux
+* **Computer Specs:** (Roughly is okay – CPU, RAM are important)  Example: "Dell XPS 13," "MacBook Pro 2020 (16GB)" or “Old Desktop PC”
+* **Audio Interface (if applicable):** If you have an XLR mic and audio interface, what model is it? (e.g., Focusrite Scarlett 2i2)
+* **Headphones/Speakers:** What are you using to listen with?
+
+
+---
+
+**Let's start with some basic troubleshooting questions, regardless of your setup.  Answer these first to help me narrow down the issue:**
+
+1. **Is the microphone actually being detected by your computer?** (This is the most common problem!)
+   * **Windows:** Go to Settings > System > Sound and check the "Input" section. Does your microphone appear in the list? Can you select it as the default input device?
+   * **macOS:** Go to System Preferences > Sound > Input.  Does your microphone show up?
+
+2. **Can you hear yourself through the microphone when you speak?** (You should hear your own voice or audio being recorded)
+    * If not, is the microphone muted in the settings? 
+
+3. **What have you already tried to fix it?** (e.g., restarting your computer, checking drivers, testing with different apps).
+
+
+**Once you answer these initial questions, I can provide more specific guidance.**  Don't worry if you don’t know all the technical details – just give me as much information as you can!
+
+To get us started, **could you tell me:**
+
+*   What are you primarily trying to use the microphone for? (Voice chat, recording, etc.)
+*   Do you know what kind of microphone you have (USB or XLR)? If USB, do you know the brand and model?
+[2026-07-09 18:29:43] [INFO] User: quit
+[2026-07-09 18:29:43] [INFO] Shutting down...
+[2026-07-09 18:29:43] [INFO] Application stopped.
+[2026-07-09 18:31:46] [INFO] Application started.
+[2026-07-09 18:31:46] [INFO] ==================================================
+[2026-07-09 18:31:46] [INFO] Starting F.R.I.D.A.Y.
+[2026-07-09 18:31:46] [INFO] Version 0.3.0
+[2026-07-09 18:31:46] [INFO] Systems online.
+[2026-07-09 18:31:46] [INFO] Awaiting commands.
+[2026-07-09 18:31:53] [INFO] User: testerror
+[2026-07-09 18:31:53] [ERROR] Exception: Testing error handling
+[2026-07-09 18:32:30] [INFO] User: quit
+[2026-07-09 18:32:30] [INFO] Shutting down...
+[2026-07-09 18:32:30] [INFO] Application stopped.

@@ -1,10 +1,15 @@
+import traceback
+
 from core.assistant import Friday
 from core.brain import Brain
+from core.logger import log
 
 
 def main():
     friday = Friday()
     brain = Brain()
+
+    log("Application started.")
 
     friday.boot()
     friday.introduce()
@@ -12,13 +17,25 @@ def main():
     while True:
         command = input("You > ")
 
+        log(f"User: {command}")
+
         if command.lower() in ["exit", "quit", "shutdown"]:
             friday.shutdown()
+            log("Application stopped.")
             break
 
-        response = brain.process(command)
+        try:
+            response = brain.process(command)
 
-        print(f"\nF.R.I.D.A.Y. > {response}\n")
+            log(f"F.R.I.D.A.Y.: {response}")
+
+            print(f"\nF.R.I.D.A.Y. > {response}\n")
+
+        except Exception as error:
+            log(f"Error while processing '{command}': {error}", "ERROR")
+            log(traceback.format_exc(), "ERROR")
+
+            print("\nF.R.I.D.A.Y. > Sorry, something went wrong.\n")
 
 
 if __name__ == "__main__":

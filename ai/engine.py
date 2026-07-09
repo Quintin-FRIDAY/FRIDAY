@@ -1,9 +1,10 @@
 from ollama import chat
+from config.settings import AI_MODEL
 
 
 class AIEngine:
 
-    def __init__(self, model="gemma3:4b"):
+    def __init__(self, model=AI_MODEL):
         self.model = model
 
     def ask(self, prompt: str) -> str:

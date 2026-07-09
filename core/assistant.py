@@ -1,5 +1,9 @@
-from core.logger import log
 from config.settings import APP_NAME, VERSION
+from core.logger import log
+
+print(APP_NAME)
+print(VERSION)
+
 
 class Friday:
 
