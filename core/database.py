@@ -13,6 +13,18 @@ class Database:
 
         self.create_tables()
 
+    def execute(self, query: str, params=()):
+        self.cursor.execute(query, params)
+        self.connection.commit()
+
+    def fetchone(self, query: str, params=()):
+        self.cursor.execute(query, params)
+        return self.cursor.fetchone()
+    
+    def fetchall(self, query: str, params=()):
+        self.cursor.execute(query, params)
+        return self.cursor.fetchall()
+
     def create_tables(self):
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS memories (

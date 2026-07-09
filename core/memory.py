@@ -7,7 +7,7 @@ class Memory:
         self.db = Database()
 
     def remember(self, key: str, value: str):
-        self.db.cursor.execute(
+        self.db.execute(
             """
             INSERT OR REPLACE INTO memories (key, value)
             VALUES (?, ?)
@@ -15,10 +15,8 @@ class Memory:
             (key, value)
         )
 
-        self.db.connection.commit()
-
     def recall(self, key: str):
-        self.db.cursor.execute(
+        result = self.db.fetchone(
             """
             SELECT value
             FROM memories
@@ -27,15 +25,13 @@ class Memory:
             (key,)
         )
 
-        result = self.db.cursor.fetchone()
-
         if result:
             return result[0]
 
         return None
 
     def forget(self, key: str):
-        self.db.cursor.execute(
+        self.db.execute(
             """
             DELETE FROM memories
             WHERE key = ?
@@ -44,13 +40,31 @@ class Memory:
         )
 
     def list_memories(self):
-        self.db.cursor.execute("""
+        return self.db.fetchall(
+            """
             SELECT key, value
             FROM memories
-            ORDER BY key
-        """)
+            """
+        )
 
-        return self.db.cursor.fetchall()
-        
-        
-        self.db.connection.commit()
+
+if __name__ == "__main__":
+    memory = Memory()
+
+    print("Saving memory...")
+    memory.remember("name", "Quintin")
+
+    print("Recalling memory...")
+    print(memory.recall("name"))
+
+    print("\nListing memories...")
+    for key, value in memory.list_memories():
+        print(f"{key} = {value}")
+
+    print("\nDeleting memory...")
+    memory.forget("name")
+
+    print("\nChecking again...")
+    print(memory.recall("name"))
+
+    memory.db.close()
