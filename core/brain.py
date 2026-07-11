@@ -4,6 +4,8 @@ from ai.engine import AIEngine
 
 
 class Brain:
+    """Coordinates developer tools, built-in commands, and AI-generated responses."""
+
     def __init__(self):
         self.ai = AIEngine()
 

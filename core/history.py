@@ -2,12 +2,13 @@ from core.database import Database
 
 
 class History:
+    """Stores and retrieves conversation history."""
 
     def __init__(self):
         self.db = Database()
 
     def add(self, role: str, message: str):
-        self.db.cursor.execute(
+        self.db.execute(
             """
             INSERT INTO conversations (role, message)
             VALUES (?, ?)
@@ -15,10 +16,8 @@ class History:
             (role, message)
         )
 
-        self.db.connection.commit()
-
     def latest(self, limit: int = 10):
-        self.db.cursor.execute(
+        rows = self.db.fetchall(
             """
             SELECT role, message
             FROM conversations
@@ -28,25 +27,21 @@ class History:
             (limit,)
         )
 
-        rows = self.db.cursor.fetchall()
-
         return list(reversed(rows))
 
     def count(self):
-        self.db.cursor.execute(
+        result = self.db.fetchone(
             """
             SELECT COUNT(*)
             FROM conversations
             """
         )
 
-        return self.db.cursor.fetchone()[0]
+        return result[0]
 
     def clear(self):
-        self.db.cursor.execute(
+        self.db.execute(
             """
             DELETE FROM conversations
             """
         )
-
-        self.db.connection.commit()

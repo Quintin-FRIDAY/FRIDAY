@@ -5,6 +5,7 @@ DATABASE = Path("data/friday.db")
 
 
 class Database:
+    """Provides access to the SQLite database used by F.R.I.D.A.Y."""
 
     def __init__(self):
         self.connection = sqlite3.connect(DATABASE)

@@ -6,7 +6,8 @@ print(VERSION)
 
 
 class Friday:
-
+    """Represents the F.R.I.D.A.Y. assistant and manages startup, shutdown, and user interaction."""
+    
     def __init__(self):
         self.name = APP_NAME
         self.version = VERSION

@@ -7,17 +7,19 @@ __pycache__/
 *$py.class
 
 # ==========================================
-# Virtual Environment
+# Virtual Environments
 # ==========================================
 
 .venv/
 venv/
+env/
 
 # ==========================================
 # Environment Variables
 # ==========================================
 
 .env
+.env.local
 
 # ==========================================
 # Logs
@@ -27,20 +29,61 @@ logs/
 *.log
 
 # ==========================================
-# Database
+# Databases
 # ==========================================
 
-data/friday.db
+data/*.db
+data/*.sqlite
+data/*.sqlite3
 
 # ==========================================
-# VS Code
+# IDEs & Editors
 # ==========================================
 
+# VS Code (ignore personal settings only)
 .vscode/settings.json
+
+# JetBrains IDEs (PyCharm, IntelliJ, etc.)
+.idea/
+
+# Obsidian personal workspace
+.obsidian/
 
 # ==========================================
 # Operating System
 # ==========================================
 
 Thumbs.db
+Desktop.ini
 .DS_Store
+
+# ==========================================
+# Python Testing
+# ==========================================
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ==========================================
+# Build Artifacts
+# ==========================================
+
+build/
+dist/
+*.egg-info/
+
+# ==========================================
+# Type Checkers & Linters
+# ==========================================
+
+.mypy_cache/
+.ruff_cache/
+
+# ==========================================
+# Temporary Files
+# ==========================================
+
+*.tmp
+*.bak
+*.swp

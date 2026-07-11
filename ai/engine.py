@@ -3,6 +3,7 @@ from config.settings import AI_MODEL
 
 
 class AIEngine:
+    """Handles communication with the configured AI model."""
 
     def __init__(self, model=AI_MODEL):
         self.model = model

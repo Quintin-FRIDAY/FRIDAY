@@ -2,6 +2,7 @@ from core.database import Database
 
 
 class Memory:
+    """Stores and retrieves persistent key-value memories."""
 
     def __init__(self):
         self.db = Database()
