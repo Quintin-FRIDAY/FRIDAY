@@ -1,155 +1,198 @@
 # 🤖 Project F.R.I.D.A.Y.
 
-> **F.R.I.D.A.Y. (Fully Responsive Intelligent Digital Assistant for You)** 
+> **F.R.I.D.A.Y. (Fully Responsive Intelligent Digital Assistant for You)**
 
-*A modular, locally hosted artificial intelligence assistant inspired by the Marvel Cinematic Universe.*
+*A modular, locally hosted artificial intelligence assistant inspired by
+the Marvel Cinematic Universe.*
 
-The goal of Project F.R.I.D.A.Y. is to create a personal AI assistant that can control a Windows computer, remember conversations, automate tasks, interact through voice, integrate with custom hardware (including smart glasses), and eventually become a completely self-hosted AI ecosystem.
+The goal of Project F.R.I.D.A.Y. is to create a personal AI assistant
+capable of controlling a Windows computer, remembering conversations,
+automating tasks, interacting naturally through voice, integrating with
+custom hardware (including smart glasses), and eventually becoming a
+complete self-hosted AI ecosystem.
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
 ![Version](https://img.shields.io/badge/version-0.4.0-green)
 ![Status](https://img.shields.io/badge/status-active_development-orange)
 ![License](https://img.shields.io/badge/license-private-red)
 
----
+> ⚠️ **Project Status**
+>
+> Project F.R.I.D.A.Y. is in **active development**. Version **v0.4.0**
+> completes the core architecture. Development is now moving into
+> **Phase 3 -- Voice & Audio Foundation**.
+
+------------------------------------------------------------------------
 
 # Vision
 
-Project F.R.I.D.A.Y. aims to become a complete personal AI ecosystem.
+Project F.R.I.D.A.Y. is being built as a **local-first**, modular AI
+platform that prioritizes privacy, extensibility, and long-term
+maintainability.
 
-Unlike traditional assistants that rely heavily on cloud services, F.R.I.D.A.Y. is being designed as a local-first, modular platform capable of:
+Long-term capabilities include:
 
-- Natural conversations
-- Long-term memory
-- Voice interaction
-- Desktop automation
-- Computer vision
-- Smart glasses integration
-- Mobile synchronization
-- Autonomous task execution
+-   Natural conversations
+-   Long-term memory
+-   Voice interaction
+-   Desktop automation
+-   Computer vision
+-   Android companion
+-   Smart glasses integration
+-   Autonomous task execution
+-   Plugin ecosystem
 
-The project is being developed incrementally with a strong focus on maintainability, extensibility, privacy, and professional software engineering practices.
-
----
+------------------------------------------------------------------------
 
 # Current Version
 
-**Version:** 0.4.0
+**Version:** 0.5.0
 
-Status:
-- Active Development
+**Status:** Active Development
 
-## Version History
+------------------------------------------------------------------------
 
-### v0.3.0
+# Version History
 
-- Long-term memory
-- Automatic memory recall
-- Memory normalization
-- Occupation extractor
-- Preference extractor
-- Location extractor
-- Name extractor
-- Developer memory console
-- Improved Brain architecture
+## v0.4.0 --- Core Architecture
 
-### v0.2.0
+-   Bootstrapper
+-   Dependency Injection Container
+-   Event Bus
+-   Plugin Manager
+-   Service Manager
+-   Settings Manager
+-   Memory Framework
+-   Event Types
+-   Improved Logging
+-   Improved Configuration
+-   Modular Project Structure
 
-- SQLite database
-- Persistent memory
-- Conversation history
-- Logging improvements
+## v0.3.0
 
----
+-   Long-term memory
+-   Automatic memory recall
+-   Memory normalization
+-   Occupation extractor
+-   Preference extractor
+-   Location extractor
+-   Name extractor
+-   Developer memory console
+-   Improved Brain architecture
+
+## v0.2.0
+
+-   SQLite database
+-   Persistent memory
+-   Conversation history
+-   Logging improvements
+
+------------------------------------------------------------------------
+
+# Architecture
+
+``` text
+                 Bootstrapper
+                        │
+                        ▼
+               Dependency Container
+                        │
+      ┌─────────────────┼─────────────────┐
+      ▼                 ▼                 ▼
+  Assistant          Brain            History
+      │                 │                 │
+      ├─────────────┬───┴────────────┐
+      ▼             ▼                ▼
+ PluginManager  Event Bus   Settings Manager
+```
+
+------------------------------------------------------------------------
 
 # Current Features
 
-## AI Core
+## Core
 
-- Local AI (Ollama)
-- Modular skill system
-- Configuration system
-- Logging system
-- Error handling
+-   Local AI using Ollama
+-   Bootstrapper
+-   Dependency Injection
+-   Event-driven architecture
+-   Configuration system
+-   Settings Manager
+-   Logging framework
+-   Error handling
+-   Plugin architecture
 
 ## Memory
 
-- SQLite database
-- Persistent memory
-- Long-term memory
-- Automatic memory extraction
-- Automatic memory recall
-- Conversation history
-- Developer memory tools
+-   SQLite database
+-   Persistent memory
+-   Long-term memory
+-   Automatic memory extraction
+-   Automatic memory recall
+-   Conversation history
+-   Developer memory tools
 
-## Developer Tools
+## Extensibility
 
-- Developer console
-- Git version control
+-   Dynamic plugin loading
+-   Plugin lifecycle
+-   Event system
+-   Modular architecture
 
----
+------------------------------------------------------------------------
 
 # Planned Features
 
-## Core AI
+## Voice (v0.5)
 
-- Memory ranking
-- Semantic memory
-- Knowledge base
-- Personality engine
-- Context awareness
-- Multiple AI providers
-
-## Voice
-
-- Speech-to-text
-- Text-to-speech
-- Wake word detection
-- Voice conversations
+-   Audio Manager
+-   Speech-to-Text
+-   Text-to-Speech
+-   Wake-word detection
+-   Natural voice conversations
 
 ## Desktop Automation
 
-- Launch applications
-- Control Windows
-- Read notifications
-- File management
-- System monitoring
+-   Launch applications
+-   Mouse & keyboard control
+-   Window management
+-   File management
+-   System monitoring
 
 ## Vision
 
-- Screenshot analysis
-- OCR
-- Object recognition
-- Webcam support
+-   OCR
+-   Screenshot analysis
+-   Object recognition
+-   Webcam support
 
 ## Smart Glasses
 
-- Heads-up display
-- Live notifications
-- Camera integration
-- Voice control
-- GPS integration
+-   Heads-up display
+-   Live notifications
+-   Voice control
+-   Camera integration
 
-## Mobile Companion
+## Android Companion
 
-- Android application
-- Notification sync
-- Remote control
-- Mobile voice assistant
+-   Notification sync
+-   Remote control
+-   Voice interaction
 
-## Plugins
+------------------------------------------------------------------------
 
-- Plugin SDK
-- Community plugins
-- Automatic plugin discovery
+# Development Progress
 
----
+```
+Core Architecture      ████████████████████ 100%
+Voice System           ░░░░░░░░░░░░░░░░░░░░   0%
+Desktop Automation     ░░░░░░░░░░░░░░░░░░░░   0%
+Vision                 ░░░░░░░░░░░░░░░░░░░░   0%
 
-# Screenshots
+Overall Progress       ██████░░░░░░░░░░░░░░ ~30%
+```
 
-Coming Soon...
-
----
+------------------------------------------------------------------------
 
 # Project Structure
 
@@ -159,175 +202,146 @@ FRIDAY/
 ├── ai/
 ├── config/
 ├── core/
+│   ├── extractors/
+│   ├── interfaces/
+│   ├── managers/
+│   ├── models/
+│   ├── bootstrap.py
+│   └── ...
 ├── data/
 ├── docs/
 ├── logs/
 ├── plugins/
-├── skills/
 ├── tests/
-├── voice/
-├── vision/
 ├── main.py
 ├── requirements.txt
 └── README.md
 ```
 
----
+------------------------------------------------------------------------
 
-# Requirements
+# Technologies
 
-- Python 3.13+
-- Ollama
-- SQLite3
-- Git
+Current
 
----
+-   Python 3.13+
+-   Ollama
+-   SQLite
+-   JSON
+-   Git
+
+Planned
+
+-   Whisper
+-   Piper
+-   OpenCV
+-   Android Debug Bridge (ADB)
+
+------------------------------------------------------------------------
 
 # Installation
 
-Clone the repository
-
-```bash
-git clone https://github.com/YOUR_USERNAME/FRIDAY.git
-```
-
-Open the project
-
-```bash
+``` bash
+git clone https://github.com/Quintin-FRIDAY/FRIDAY.git
 cd FRIDAY
-```
 
-Create a virtual environment
-
-```bash
 python -m venv .venv
-```
 
-Activate it
-
-Windows
-
-```powershell
+# Windows
 .venv\Scripts\activate
-```
 
-Install dependencies
-
-```bash
 pip install -r requirements.txt
-```
 
-Run F.R.I.D.A.Y.
-
-```bash
 python main.py
 ```
 
----
+------------------------------------------------------------------------
 
 # Development Roadmap
 
-## Phase 1
+## ✅ Phase 1
 
-- ✅ Core Framework
-- ✅ Configuration
-- ✅ Logging
-- ✅ Error Handling
+-   Core Assistant
+-   Configuration
+-   Logging
+-   Error Handling
 
-## Phase 2
+## ✅ Phase 2
 
-- ✅ Database
-- ✅ Memory
-- ✅ Conversation History
-- ✅ Core Architecture
-- ✅ Long-Term Memory
-- 🔄 Knowledge Base
-- ⏳ Personality Engine
+-   Memory System
+-   Plugin System
+-   Event Bus
+-   Service Manager
+-   Dependency Injection
+-   Settings Manager
+-   Bootstrapper
 
-## Phase 3
+## 🚧 Phase 3
 
-- Voice System
+-   Audio Foundation
+-   Speech-to-Text
+-   Text-to-Speech
+-   Wake Word
+-   Voice Conversations
 
-## Phase 4
+## ⏳ Phase 4
 
-- Desktop Automation
+Desktop Automation
 
-## Phase 5
+## ⏳ Phase 5
 
-- Vision System
+Vision System
 
-## Phase 6
+## ⏳ Phase 6
 
-- Plugin System
+Android Companion
 
-## Phase 7
+## ⏳ Phase 7
 
-- Smart Glasses
+Smart Glasses
 
-## Phase 8
+## ⏳ Phase 8
 
-- Android Companion
+Autonomous AI
 
-## Phase 9
-
-- Autonomous AI
-
----
+------------------------------------------------------------------------
 
 # Development Principles
 
-Project F.R.I.D.A.Y. follows several guiding principles:
+-   Modular architecture
+-   Local-first design
+-   Privacy-focused
+-   Offline-first where possible
+-   Extensible plugin system
+-   Professional code standards
+-   Continuous refactoring
+-   Automated testing
 
-- Modular architecture
-- Local-first design
-- Privacy-focused
-- Offline capable where possible
-- Extensible plugin system
-- Professional code standards
-- Continuous refactoring
-- Thorough testing
-
----
-
-# Long-Term Memory
-
-F.R.I.D.A.Y. can now:
-
-- Learn your name
-- Learn your location
-- Learn your hometown
-- Learn your preferences
-- Learn your occupation
-- Recall memories naturally
-- Store memories in SQLite
-
----
-
-# Architecture
-
-Coming in future releases...
-
----
+------------------------------------------------------------------------
 
 # Community
 
-**Community resources will become available as the project matures.**
+Community resources will be introduced as the project grows.
 
-- Discord Server (Planned)
-- Documentation Website (Planned)
-- Project Wiki (Planned)
+-   Discord Server (Planned)
+-   Documentation Website (Planned)
+-   Project Wiki (Planned)
 
----
+------------------------------------------------------------------------
 
 # License
 
 This project is currently under private development.
-A public open-source release is planned once the core architecture reaches a stable milestone.
 
----
+A public open-source release is planned after the core platform reaches
+a stable milestone.
+
+------------------------------------------------------------------------
 
 # Author
 
 **Quintin Janse van Rensburg**
 
-Project F.R.I.D.A.Y. is a long-term personal AI assistant project being developed from scratch with the goal of becoming a fully featured intelligent assistant capable of operating across desktop, mobile, and wearable platforms.
+Project F.R.I.D.A.Y. is a long-term engineering project focused on
+building a complete personal AI ecosystem spanning desktop, mobile, and
+wearable platforms.
