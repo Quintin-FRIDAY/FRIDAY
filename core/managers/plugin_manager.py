@@ -7,9 +7,11 @@ from pathlib import Path
 import json
 import importlib.util
 
+from core.events import event_bus
+from core.logger import log
+from core.models.event_type import EventType
 from core.models.plugin import Plugin
 from core.models.plugin_metadata import PluginMetadata
-from core.events import event_bus
 
 
 class PluginManager:
@@ -104,8 +106,12 @@ class PluginManager:
             if hasattr(module, "startup"):
                 module.startup()
 
+            log(
+                f"Plugin '{metadata.name}' v{metadata.version} loaded successfully."
+            )
+
             event_bus.emit(
-                "plugin_loaded",
+                EventType.PLUGIN_LOADED,
                 plugin=metadata.name,
                 version=metadata.version
             )
@@ -119,8 +125,13 @@ class PluginManager:
 
         except Exception as error:
 
+            log(
+                f"Failed to load plugin '{metadata.name}': {error}",
+                "ERROR"
+            )
+
             event_bus.emit(
-                "plugin_failed",
+                EventType.PLUGIN_FAILED,
                 plugin=metadata.name,
                 error=str(error)
             )
@@ -135,10 +146,12 @@ class PluginManager:
 
     def load_plugins(self):
         """
-        Load all plugins.
+        Load all enabled plugins.
         """
 
         self.plugins.clear()
+
+        log("Loading plugins...")
 
         for folder in self.discover_plugins():
 
@@ -147,13 +160,15 @@ class PluginManager:
             if plugin:
                 self.plugins.append(plugin)
 
+        log(f"Loaded {len(self.loaded_plugins)} plugin(s).")
+
     def process(self, command: str) -> str | None:
         """
         Give each loaded plugin a chance to handle a command.
         """
 
         event_bus.emit(
-            "command_received",
+            EventType.COMMAND_RECEIVED,
             command=command
         )
 
@@ -163,8 +178,12 @@ class PluginManager:
 
                 if plugin.module.can_handle(command):
 
+                    log(
+                        f"Plugin '{plugin.metadata.name}' handled command '{command}'."
+                    )
+
                     event_bus.emit(
-                        "command_handled",
+                        EventType.COMMAND_HANDLED,
                         plugin=plugin.metadata.name,
                         command=command
                     )
@@ -176,8 +195,13 @@ class PluginManager:
                 plugin.loaded = False
                 plugin.error = str(error)
 
+                log(
+                    f"Plugin '{plugin.metadata.name}' crashed while handling a command: {error}",
+                    "ERROR"
+                )
+
         event_bus.emit(
-            "command_unhandled",
+            EventType.COMMAND_UNHANDLED,
             command=command
         )
 
@@ -188,21 +212,37 @@ class PluginManager:
         Shutdown all loaded plugins.
         """
 
+        log("Shutting down plugins...")
+
         for plugin in self.loaded_plugins:
 
             try:
 
                 if hasattr(plugin.module, "shutdown"):
+
+                    log(
+                        f"Shutting down plugin '{plugin.metadata.name}'."
+                    )
+
                     plugin.module.shutdown()
 
             except Exception as error:
 
                 plugin.error = str(error)
 
+                log(
+                    f"Error shutting down plugin '{plugin.metadata.name}': {error}",
+                    "ERROR"
+                )
+
+        log("Plugin shutdown complete.")
+
     def reload_plugins(self):
         """
         Reload every plugin.
         """
+
+        log("Reloading plugins...")
 
         self.shutdown_plugins()
         self.load_plugins()

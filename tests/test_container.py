@@ -9,16 +9,16 @@ container = Container()
 
 example = Example()
 
-container.register("example", example)
+container.register(Example, example)
 
-print(container.exists("example"))
+print(container.exists(Example))
 
-resolved = container.resolve("example")
+resolved = container.resolve(Example)
 
 print(example is resolved)
 
 print(container.registered_services())
 
-container.unregister("example")
+container.unregister(Example)
 
-print(container.exists("example"))
+print(container.exists(Example))

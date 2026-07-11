@@ -3,6 +3,8 @@ Project F.R.I.D.A.Y.
 Dependency Injection Container
 """
 
+from typing import Any
+
 
 class Container:
     """
@@ -10,40 +12,40 @@ class Container:
     """
 
     def __init__(self):
-        self._services = {}
+        self._services: dict[type, Any] = {}
 
-    def register(self, key, instance):
+    def register(self, service_type: type, instance: Any):
         """
         Register a service instance.
         """
 
-        self._services[key] = instance
+        self._services[service_type] = instance
 
-    def resolve(self, key):
+    def resolve(self, service_type: type) -> Any:
         """
         Resolve a registered service.
         """
 
-        if key not in self._services:
+        if service_type not in self._services:
             raise KeyError(
-                f"Service '{key}' is not registered."
+                f"Service '{service_type.__name__}' is not registered."
             )
 
-        return self._services[key]
+        return self._services[service_type]
 
-    def exists(self, key) -> bool:
+    def exists(self, service_type: type) -> bool:
         """
-        Check whether a service exists.
+        Check whether a service is registered.
         """
 
-        return key in self._services
+        return service_type in self._services
 
-    def unregister(self, key):
+    def unregister(self, service_type: type):
         """
         Remove a service.
         """
 
-        self._services.pop(key, None)
+        self._services.pop(service_type, None)
 
     def clear(self):
         """
@@ -52,9 +54,12 @@ class Container:
 
         self._services.clear()
 
-    def registered_services(self):
+    def registered_services(self) -> list[str]:
         """
-        Return every registered key.
+        Return the names of all registered services.
         """
 
-        return list(self._services.keys())
+        return [
+            service.__name__
+            for service in self._services.keys()
+        ]

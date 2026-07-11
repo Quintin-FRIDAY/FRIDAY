@@ -1,6 +1,7 @@
 from config.settings import APP_NAME, VERSION
 from core.logger import log
 from core.events import event_bus
+from core.models.event_type import EventType
 
 print(APP_NAME)
 print(VERSION)
@@ -14,10 +15,7 @@ class Friday:
         self.version = VERSION
 
     def boot(self):
-        event_bus.emit(
-            "assistant_started",
-            version=self.version
-        )
+        event_bus.emit(EventType.ASSISTANT_STARTED, version=self.version)
 
         log("=" * 50)
         log(f"Starting {self.name}")
@@ -26,7 +24,7 @@ class Friday:
         log("Awaiting commands.")
 
     def shutdown(self):
-        event_bus.emit("assistant_stopped")
+        event_bus.emit(EventType.ASSISTANT_STOPPED)
 
         log("Shutting down...")
 
@@ -38,7 +36,4 @@ class Friday:
         print("All systems are functioning normally.")
         print()
 
-        event_bus.emit(
-            "assistant_introduced",
-            assistant=self.name
-        )
+        event_bus.emit(EventType.ASSISTANT_INTRODUCED)
