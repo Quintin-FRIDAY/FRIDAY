@@ -1,6 +1,6 @@
 import traceback
 
-from core import event_bus
+from core.events import event_bus
 import core.event_logger
 
 from core.assistant import Friday
@@ -8,11 +8,20 @@ from core.brain import Brain
 from core.history import History
 from core.logger import log
 
+from core.container_instance import container
+
 
 def main():
+    # Create core components
     friday = Friday()
     brain = Brain()
     history = History()
+
+    # Register components in the Dependency Injection Container
+    container.register("assistant", friday)
+    container.register("brain", brain)
+    container.register("history", history)
+    container.register("event_bus", event_bus)
 
     log("Application started.")
 
