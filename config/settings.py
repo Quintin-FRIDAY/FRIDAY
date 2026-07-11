@@ -3,7 +3,7 @@ import os
 from config.loader import *
 
 APP_NAME = os.getenv("APP_NAME", "F.R.I.D.A.Y.")
-VERSION = os.getenv("VERSION", "0.3.0")
+VERSION = os.getenv("VERSION", "0.4.0")
 
 AI_MODEL = os.getenv("AI_MODEL", "gemma3:4b")
 
