@@ -1,5 +1,8 @@
 import traceback
 
+from core import event_bus
+import core.event_logger
+
 from core.assistant import Friday
 from core.brain import Brain
 from core.history import History
@@ -19,6 +22,11 @@ def main():
     while True:
         command = input("You > ")
 
+        event_bus.emit(
+            "user_command",
+            command=command
+        )
+
         log(f"User: {command}")
         history.add("User", command)
 
@@ -29,6 +37,11 @@ def main():
 
         try:
             response = brain.process(command)
+
+            event_bus.emit(
+                "assistant_response",
+                response=response
+            )
 
             log(f"F.R.I.D.A.Y.: {response}")
             history.add("Assistant", response)
