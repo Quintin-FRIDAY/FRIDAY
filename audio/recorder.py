@@ -191,7 +191,10 @@ class AudioRecorder:
         """
 
         if status:
-            log.warning(f"Audio stream status: {status}")
+            log(
+                f"Audio stream status: {status}",
+                level="WARNING",
+            )
             
 
         with self._lock:

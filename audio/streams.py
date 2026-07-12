@@ -7,9 +7,8 @@ from __future__ import annotations
 
 from typing import Callable
 
-import sounddevice as sd
-
 import numpy as np
+import sounddevice as sd
 
 from core.models.audio_configuration import AudioConfiguration
 
@@ -31,30 +30,44 @@ class InputAudioStream:
         self._configuration = configuration
 
         self._stream = sd.InputStream(
-            samplerate=configuration.sample_rate,
-            channels=configuration.channels,
-            dtype=configuration.dtype,
-            blocksize=configuration.block_size,
+            device=(
+                self._configuration.input_device.id
+                if self._configuration.input_device
+                else None
+            ),
+            samplerate=self._configuration.sample_rate,
+            channels=self._configuration.channels,
+            dtype=self._configuration.dtype,
+            blocksize=self._configuration.block_size,
             callback=callback,
         )
 
     def start(self) -> None:
-        """Start the audio stream."""
+        """
+        Start the audio stream.
+        """
         self._stream.start()
 
     def stop(self) -> None:
-        """Stop the audio stream."""
+        """
+        Stop the audio stream.
+        """
         self._stream.stop()
 
     def close(self) -> None:
-        """Close the audio stream."""
+        """
+        Close the audio stream.
+        """
         self._stream.close()
 
     @property
     def active(self) -> bool:
-        """Return whether the stream is active."""
+        """
+        Return whether the stream is active.
+        """
         return self._stream.active
-    
+
+
 class OutputAudioStream:
     """
     Wraps audio playback through sounddevice.
@@ -67,7 +80,10 @@ class OutputAudioStream:
 
         self._configuration = configuration
 
-    def play(self, audio: np.ndarray,) -> None:
+    def play(
+        self,
+        audio: np.ndarray,
+    ) -> None:
         """
         Play a NumPy audio buffer.
         """
@@ -75,6 +91,11 @@ class OutputAudioStream:
         sd.play(
             audio,
             samplerate=self._configuration.sample_rate,
+            device=(
+                self._configuration.output_device.id
+                if self._configuration.output_device
+                else None
+            ),
         )
 
     def stop(self) -> None:

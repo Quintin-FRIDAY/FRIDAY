@@ -7,6 +7,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from core.models.audio_device import AudioDevice
+
 
 @dataclass(slots=True)
 class AudioConfiguration:
@@ -18,7 +20,7 @@ class AudioConfiguration:
     channels: int = 1
     dtype: str = "float32"
 
-    input_device: int | None = None
-    output_device: int | None = None
+    input_device: AudioDevice | None = None
+    output_device: AudioDevice | None = None
 
     block_size: int = 1024
