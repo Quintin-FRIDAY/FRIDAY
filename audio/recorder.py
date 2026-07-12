@@ -11,15 +11,19 @@ Phase 3.1.
 from __future__ import annotations
 
 import threading
-from core.logger import logger
+from core.logger import log
 
 import numpy as np
+
+import wave
 
 from audio.streams import InputAudioStream
 
 from core.models.audio_configuration import AudioConfiguration
 
 from audio.exceptions import (RecordingAlreadyRunningError, RecordingNotRunningError,)
+
+from pathlib import Path
 
 class AudioRecorder:
     """
@@ -148,16 +152,38 @@ class AudioRecorder:
 
             return np.concatenate(self._frames)
         
-    def save(self, path: str) -> None:
+    def save(self, path: str | Path) -> None:
         """
-        Save recorded audio.
-
-        Implemented in a later step.
+        Save the recorded audio to a WAV file.
         """
 
-        raise NotImplementedError(
-            "Audio saving has not been implemented yet."
+        path = Path(path)
+
+        path.parent.mkdir(
+            parents=True,
+            exist_ok=True,
         )
+
+        audio = self.get_audio()
+
+        if audio.size == 0:
+            raise ValueError("No recorded audio to save.")
+
+        pcm = np.clip(audio, -1.0, 1.0)
+
+        pcm = (pcm * 32767).astype(np.int16)
+
+        with wave.open(str(path), "wb") as wav:
+
+            wav.setnchannels(self._configuration.channels)
+
+            wav.setsampwidth(2)
+
+            wav.setframerate(
+                self._configuration.sample_rate
+            )
+
+            wav.writeframes(pcm.tobytes())
     
     def _audio_callback(self, indata: np.ndarray, frames: int, time, status,) -> None:
         """
@@ -165,7 +191,7 @@ class AudioRecorder:
         """
 
         if status:
-            logger.warning(f"Audio stream status: {status}")
+            log.warning(f"Audio stream status: {status}")
             
 
         with self._lock:

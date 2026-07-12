@@ -2,27 +2,22 @@ import time
 
 from audio.recorder import AudioRecorder
 from core.models.audio_configuration import AudioConfiguration
+from pathlib import Path
 
+recorder = AudioRecorder(AudioConfiguration())
 
-def main():
+print("Recording...")
 
-    recorder = AudioRecorder(AudioConfiguration())
+recorder.start()
 
-    print("Recording for 5 seconds...")
-    print("Speak into your microphone.\n")
+time.sleep(5)
 
-    recorder.start()
+recorder.stop()
 
-    time.sleep(5)
+recording = Path(
+    "recordings/debug/test.wav"
+)
 
-    recorder.stop()
+recorder.save(recording)
 
-    audio = recorder.get_audio()
-
-    print(f"Recording finished.")
-    print(f"Shape   : {audio.shape}")
-    print(f"Samples : {audio.size}")
-
-
-if __name__ == "__main__":
-    main()
+print("Saved!")
