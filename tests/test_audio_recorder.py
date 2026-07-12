@@ -1,15 +1,28 @@
+import time
+
 from audio.recorder import AudioRecorder
 from core.models.audio_configuration import AudioConfiguration
 
-config = AudioConfiguration()
-recorder = AudioRecorder(config)
 
-print("Initial:", recorder.is_recording)
+def main():
 
-recorder.start()
-print("Started:", recorder.is_recording)
+    recorder = AudioRecorder(AudioConfiguration())
 
-recorder.stop()
-print("Stopped:", recorder.is_recording)
+    print("Recording for 5 seconds...")
+    print("Speak into your microphone.\n")
 
-print("Audio:", recorder.get_audio())
+    recorder.start()
+
+    time.sleep(5)
+
+    recorder.stop()
+
+    audio = recorder.get_audio()
+
+    print(f"Recording finished.")
+    print(f"Shape   : {audio.shape}")
+    print(f"Samples : {audio.size}")
+
+
+if __name__ == "__main__":
+    main()

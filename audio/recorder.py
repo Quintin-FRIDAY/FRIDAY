@@ -11,9 +11,11 @@ Phase 3.1.
 from __future__ import annotations
 
 import threading
-from typing import Optional
+from core.logger import logger
 
 import numpy as np
+
+from audio.streams import InputAudioStream
 
 from core.models.audio_configuration import AudioConfiguration
 
@@ -46,8 +48,8 @@ class AudioRecorder:
 
         self._configuration = configuration
 
-        # Input stream (created later)
-        self._stream: Optional[object] = None
+        # Active input stream
+        self._stream: InputAudioStream | None = None
 
         # Buffered audio chunks
         self._frames: list[np.ndarray] = []
@@ -86,7 +88,10 @@ class AudioRecorder:
 
             self._frames.clear()
             self._recording = True
+            self._stream = InputAudioStream(configuration=self._configuration, callback=self._audio_callback,)
+            self._stream.start()
 
+            
     def stop(self) -> None:
         """
         Stop the active recording session.
@@ -101,6 +106,11 @@ class AudioRecorder:
 
             self._recording = False
 
+            if self._stream is not None:
+                self._stream.stop()
+                self._stream.close()
+                self._stream = None
+
     def cancel(self) -> None:
         """
         Cancel the recording and discard buffered audio.
@@ -109,6 +119,14 @@ class AudioRecorder:
         with self._lock:
             self._frames.clear()
             self._recording = False
+
+        if self._stream is not None:
+            self._stream.stop()
+            self._stream.close()
+            self._stream = None
+
+        self._frames.clear()
+        self._recording = False
 
     def clear(self) -> None:
         """
@@ -140,3 +158,16 @@ class AudioRecorder:
         raise NotImplementedError(
             "Audio saving has not been implemented yet."
         )
+    
+    def _audio_callback(self, indata: np.ndarray, frames: int, time, status,) -> None:
+        """
+        Receive microphone audio from the input stream.
+        """
+
+        if status:
+            logger.warning(f"Audio stream status: {status}")
+            
+
+        with self._lock:
+            if self._recording:
+                self._frames.append(indata.copy())
