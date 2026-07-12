@@ -10,6 +10,10 @@ from pathlib import Path
 
 import numpy as np
 
+import wave
+
+from audio.streams import OutputAudioStream
+
 from core.models.audio_configuration import AudioConfiguration
 
 
@@ -28,7 +32,9 @@ class AudioPlayer:
 
         self._configuration = configuration
 
-        self._stream = None
+        self._stream = OutputAudioStream(
+            configuration,
+        )
 
         self._playing = False
 
@@ -52,18 +58,52 @@ class AudioPlayer:
         """
         Play audio from a NumPy array.
         """
-        raise NotImplementedError
+        with self._lock:
+
+            self._playing = True
+
+        self._stream.play(audio)
+
+        self._stream.wait()
+
+        with self._lock:
+
+            self._playing = False
 
 
-    def play_file(self, path: str | Path) -> None:
+    def play_file(self,path: str | Path) -> None:
         """
-        Play audio from a WAV file.
+        Play a WAV file.
         """
-        raise NotImplementedError
+
+        path = Path(path)
+
+        with wave.open(str(path), "rb") as wav:
+
+            frames = wav.readframes(wav.getnframes())
+
+            audio = np.frombuffer(
+                frames,
+                dtype=np.int16,
+            )
+
+            if wav.getnchannels() > 1:
+                audio = audio.reshape(
+                    -1,
+                    wav.getnchannels(),
+                )
+
+            audio = audio.astype(np.float32) / 32767.0
+
+        self.play(audio)
 
 
     def stop(self) -> None:
         """
         Stop playback.
         """
-        raise NotImplementedError
+        with self._lock:
+
+            self._stream.stop()
+
+            self._playing = False

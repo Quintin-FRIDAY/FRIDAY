@@ -9,6 +9,8 @@ from typing import Callable
 
 import sounddevice as sd
 
+import numpy as np
+
 from core.models.audio_configuration import AudioConfiguration
 
 
@@ -52,3 +54,39 @@ class InputAudioStream:
     def active(self) -> bool:
         """Return whether the stream is active."""
         return self._stream.active
+    
+class OutputAudioStream:
+    """
+    Wraps audio playback through sounddevice.
+    """
+
+    def __init__(
+        self,
+        configuration: AudioConfiguration,
+    ) -> None:
+
+        self._configuration = configuration
+
+    def play(self, audio: np.ndarray,) -> None:
+        """
+        Play a NumPy audio buffer.
+        """
+
+        sd.play(
+            audio,
+            samplerate=self._configuration.sample_rate,
+        )
+
+    def stop(self) -> None:
+        """
+        Stop playback.
+        """
+
+        sd.stop()
+
+    def wait(self) -> None:
+        """
+        Wait until playback has completed.
+        """
+
+        sd.wait()

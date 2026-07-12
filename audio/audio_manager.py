@@ -6,6 +6,9 @@ Audio Manager
 from core.models.audio_device import AudioDevice
 from core.models.audio_configuration import AudioConfiguration
 
+from audio.player import AudioPlayer
+from audio.recorder import AudioRecorder
+
 from audio.devices import (
     get_all_devices,
     get_input_devices,
@@ -32,6 +35,14 @@ class AudioManager:
         )
 
         self.configuration = AudioConfiguration()
+
+        self.recorder = AudioRecorder(
+            self.configuration
+        )
+
+        self.player = AudioPlayer(
+            self.configuration
+        )
 
     # --------------------------------------------------
     # Device Lists
@@ -111,3 +122,22 @@ class AudioManager:
         """
 
         self.configuration = configuration
+
+    # --------------------------------------------------
+    # Audio Components
+    # --------------------------------------------------
+
+    def get_recorder(self) -> AudioRecorder:
+        """
+        Return the audio recorder.
+        """
+
+        return self.recorder
+
+
+    def get_player(self) -> AudioPlayer:
+        """
+        Return the audio player.
+        """
+
+        return self.player
