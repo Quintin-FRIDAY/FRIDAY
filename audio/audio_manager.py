@@ -15,6 +15,7 @@ from audio.devices import (
     get_output_devices,
 )
 
+from speech.recognizer import SpeechRecognizer
 
 class AudioManager:
     """
@@ -46,6 +47,10 @@ class AudioManager:
         self.player = AudioPlayer(
             self.configuration
         )
+
+        self.speech_recognizer = SpeechRecognizer()
+
+        self.speech_recognizer.load_model()
 
     # --------------------------------------------------
     # Device Lists
@@ -149,3 +154,14 @@ class AudioManager:
         """
 
         return self.player
+    
+    # --------------------------------------------------
+    # Speech Recognizer
+    # --------------------------------------------------
+
+    def get_speech_recognizer(self) -> SpeechRecognizer:
+        """
+        Return the speech recognizer.
+        """
+
+        return self.speech_recognizer
