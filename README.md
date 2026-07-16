@@ -189,14 +189,14 @@ Wearable Ecosystem - Smart Glasses - Smart Watch - Smart Ring - Aegis OS
 
 # 🛠️ Technology Stack
 
-  Layer             Technology
-  ----------------- ----------------
-  Language          Python 3.13
-  AI                Ollama + Gemma
-  Speech            Faster-Whisper
-  Audio             SoundDevice
-  Database          SQLite
-  Version Control   Git
+ | Layer             | Technology
+ | ----------------- | ----------------
+ | Language          | Python 3.13
+ | AI                | Ollama + Gemma
+ | Speech            | Faster-Whisper
+ | Audio             | SoundDevice
+ | Database          | SQLite
+ | Version Control   | Git
 
 ------------------------------------------------------------------------
 
