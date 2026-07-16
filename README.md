@@ -1,245 +1,206 @@
+::: {align="center"}
 # 🤖 Project F.R.I.D.A.Y.
 
-> **F.R.I.D.A.Y. (Fully Responsive Intelligent Digital Assistant for You)**
+### **Fully Responsive Intelligent Digital Assistant for You**
 
-*A modular, locally hosted artificial intelligence assistant inspired by
-the Marvel Cinematic Universe.*
+*A modular, local-first, voice-enabled AI assistant inspired by the
+Marvel Cinematic Universe.*
 
-The goal of Project F.R.I.D.A.Y. is to create a personal AI assistant
-capable of controlling a Windows computer, remembering conversations,
-automating tasks, interacting naturally through voice, integrating with
-custom hardware (including smart glasses), and eventually becoming a
-complete self-hosted AI ecosystem.
-
+![Version](https://img.shields.io/badge/version-v0.6.0-success)
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
-![Version](https://img.shields.io/badge/version-0.4.0-green)
-![Status](https://img.shields.io/badge/status-active_development-orange)
-![License](https://img.shields.io/badge/license-private-red)
-
-> ⚠️ **Project Status**
->
-> Project F.R.I.D.A.Y. is in **active development**. Version **v0.4.0**
-> completes the core architecture. Development is now moving into
-> **Phase 3 -- Voice & Audio Foundation**.
+![Status](https://img.shields.io/badge/status-Active_Development-orange)
+![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
+![License](https://img.shields.io/badge/License-Private-red)
+:::
 
 ------------------------------------------------------------------------
 
-# Vision
+# 🚀 Overview
 
-Project F.R.I.D.A.Y. is being built as a **local-first**, modular AI
-platform that prioritizes privacy, extensibility, and long-term
-maintainability.
+Project **F.R.I.D.A.Y.** is a long-term engineering project to create a
+fully modular, offline-first AI ecosystem. It combines voice
+interaction, local AI, memory, automation, plugins, and future wearable
+devices into a single extensible platform.
 
-Long-term capabilities include:
+## Core Principles
 
--   Natural conversations
--   Long-term memory
--   Voice interaction
--   Desktop automation
--   Computer vision
--   Android companion
--   Smart glasses integration
--   Autonomous task execution
--   Plugin ecosystem
+-   🔒 Privacy First
+-   💻 Local AI
+-   🧩 Modular Architecture
+-   ⚡ Offline by Default
+-   🏗️ Future-Proof Design
 
 ------------------------------------------------------------------------
 
-# Current Version
+# ✨ Current Features
 
-**Version:** 0.5.0
+## 🧠 AI
 
-**Status:** Active Development
+-   Local LLM (Ollama)
+-   Brain routing
+-   AI fallback
+-   Modular AI engine
 
-------------------------------------------------------------------------
+## 🎤 Voice
 
-# Version History
+-   Offline speech recognition
+-   Faster-Whisper integration
+-   Voice pipeline
+-   Voice sessions
+-   Voice controller
+-   Brain integration
 
-## v0.4.0 --- Core Architecture
+## 🔊 Audio
+
+-   AudioManager
+-   Device discovery
+-   Recording
+-   Playback
+-   WAV support
+-   Multiple device selection
+
+## 🧠 Memory
+
+-   SQLite database
+-   Persistent memory
+-   Automatic extraction
+-   Conversation history
+
+## ⚙️ Core
 
 -   Bootstrapper
--   Dependency Injection Container
+-   Dependency Injection
 -   Event Bus
 -   Plugin Manager
 -   Service Manager
 -   Settings Manager
--   Memory Framework
--   Event Types
--   Improved Logging
--   Improved Configuration
--   Modular Project Structure
-
-## v0.3.0
-
--   Long-term memory
--   Automatic memory recall
--   Memory normalization
--   Occupation extractor
--   Preference extractor
--   Location extractor
--   Name extractor
--   Developer memory console
--   Improved Brain architecture
-
-## v0.2.0
-
--   SQLite database
--   Persistent memory
--   Conversation history
--   Logging improvements
+-   Logging
+-   Configuration
 
 ------------------------------------------------------------------------
 
-# Architecture
+# 🏗️ Architecture
+
+``` mermaid
+graph TD
+
+User --> VoiceController
+VoiceController --> VoiceSession
+VoiceSession --> VoicePipeline
+VoicePipeline --> AudioRecorder
+VoicePipeline --> SpeechRecognizer
+SpeechRecognizer --> Brain
+Brain --> AIEngine
+AIEngine --> Ollama
+```
+
+------------------------------------------------------------------------
+
+# 📊 Development Timeline
+
+  Version   Status   Highlights
+  --------- -------- ------------------------------------
+  v0.2.0    ✅       Memory
+  v0.3.0    ✅       Brain Improvements
+  v0.4.0    ✅       Core Architecture
+  v0.5.0    ✅       Audio & Speech Recognition
+  v0.6.0    ✅       Voice Pipeline & Brain Integration
+  v0.7.0    🚧       Text-to-Speech
+
+------------------------------------------------------------------------
+
+# 🛣️ Roadmap
+
+## ✅ Completed
+
+### Phase 1
+
+-   [x] Core Assistant
+-   [x] Configuration
+-   [x] Logging
+
+### Phase 2
+
+-   [x] Memory Framework
+-   [x] Dependency Injection
+-   [x] Event Bus
+-   [x] Plugin System
+
+### Phase 3.1
+
+-   [x] Audio Subsystem
+
+### Phase 3.2
+
+-   [x] Speech Recognition
+
+### Phase 3.3
+
+-   [x] Voice Pipeline
+-   [x] Brain Integration
+
+## 🚧 In Progress
+
+### Phase 3.4
+
+-   [ ] Text-to-Speech
+-   [ ] Voice Responses
+-   [ ] Conversation Loop
+
+## ⏳ Planned
+
+### Phase 4
+
+Desktop Automation
+
+### Phase 5
+
+Computer Vision
+
+### Phase 6
+
+Plugin Ecosystem
+
+### Phase 7
+
+Wearable Ecosystem - Smart Glasses - Smart Watch - Smart Ring - Aegis OS
+
+------------------------------------------------------------------------
+
+# 🌐 Ecosystem
 
 ``` text
-                 Bootstrapper
-                        │
-                        ▼
-               Dependency Container
-                        │
-      ┌─────────────────┼─────────────────┐
-      ▼                 ▼                 ▼
-  Assistant          Brain            History
-      │                 │                 │
-      ├─────────────┬───┴────────────┐
-      ▼             ▼                ▼
- PluginManager  Event Bus   Settings Manager
+              F.R.I.D.A.Y.
+                    │
+    ┌───────────────┼────────────────┐
+    ▼               ▼                ▼
+ Desktop        Android        Wearables
+ Assistant      Companion
+                                     │
+              ┌───────────┬──────────┴─────────┐
+              ▼           ▼                    ▼
+       Smart Glasses  Smart Watch       Smart Ring
+                                │
+                                ▼
+                             Aegis OS
 ```
 
 ------------------------------------------------------------------------
 
-# Current Features
+# 🛠️ Technology Stack
 
-## Core
-
--   Local AI using Ollama
--   Bootstrapper
--   Dependency Injection
--   Event-driven architecture
--   Configuration system
--   Settings Manager
--   Logging framework
--   Error handling
--   Plugin architecture
-
-## Memory
-
--   SQLite database
--   Persistent memory
--   Long-term memory
--   Automatic memory extraction
--   Automatic memory recall
--   Conversation history
--   Developer memory tools
-
-## Extensibility
-
--   Dynamic plugin loading
--   Plugin lifecycle
--   Event system
--   Modular architecture
+  Layer             Technology
+  ----------------- ----------------
+  Language          Python 3.13
+  AI                Ollama + Gemma
+  Speech            Faster-Whisper
+  Audio             SoundDevice
+  Database          SQLite
+  Version Control   Git
 
 ------------------------------------------------------------------------
 
-# Planned Features
-
-## Voice (v0.5)
-
--   Audio Manager
--   Speech-to-Text
--   Text-to-Speech
--   Wake-word detection
--   Natural voice conversations
-
-## Desktop Automation
-
--   Launch applications
--   Mouse & keyboard control
--   Window management
--   File management
--   System monitoring
-
-## Vision
-
--   OCR
--   Screenshot analysis
--   Object recognition
--   Webcam support
-
-## Smart Glasses
-
--   Heads-up display
--   Live notifications
--   Voice control
--   Camera integration
-
-## Android Companion
-
--   Notification sync
--   Remote control
--   Voice interaction
-
-------------------------------------------------------------------------
-
-# Development Progress
-
-```
-Core Architecture      ████████████████████ 100%
-Voice System           ░░░░░░░░░░░░░░░░░░░░   0%
-Desktop Automation     ░░░░░░░░░░░░░░░░░░░░   0%
-Vision                 ░░░░░░░░░░░░░░░░░░░░   0%
-
-Overall Progress       ██████░░░░░░░░░░░░░░ ~30%
-```
-
-------------------------------------------------------------------------
-
-# Project Structure
-
-```
-FRIDAY/
-│
-├── ai/
-├── config/
-├── core/
-│   ├── extractors/
-│   ├── interfaces/
-│   ├── managers/
-│   ├── models/
-│   ├── bootstrap.py
-│   └── ...
-├── data/
-├── docs/
-├── logs/
-├── plugins/
-├── tests/
-├── main.py
-├── requirements.txt
-└── README.md
-```
-
-------------------------------------------------------------------------
-
-# Technologies
-
-Current
-
--   Python 3.13+
--   Ollama
--   SQLite
--   JSON
--   Git
-
-Planned
-
--   Whisper
--   Piper
--   OpenCV
--   Android Debug Bridge (ADB)
-
-------------------------------------------------------------------------
-
-# Installation
+# ⚡ Installation
 
 ``` bash
 git clone https://github.com/Quintin-FRIDAY/FRIDAY.git
@@ -257,91 +218,25 @@ python main.py
 
 ------------------------------------------------------------------------
 
-# Development Roadmap
+# 📚 Future Documentation
 
-## ✅ Phase 1
-
--   Core Assistant
--   Configuration
--   Logging
--   Error Handling
-
-## ✅ Phase 2
-
--   Memory System
--   Plugin System
--   Event Bus
--   Service Manager
--   Dependency Injection
--   Settings Manager
--   Bootstrapper
-
-## 🚧 Phase 3
-
--   Audio Foundation
--   Speech-to-Text
--   Text-to-Speech
--   Wake Word
--   Voice Conversations
-
-## ⏳ Phase 4
-
-Desktop Automation
-
-## ⏳ Phase 5
-
-Vision System
-
-## ⏳ Phase 6
-
-Android Companion
-
-## ⏳ Phase 7
-
-Smart Glasses
-
-## ⏳ Phase 8
-
-Autonomous AI
+``` text
+docs/
+├── Architecture
+├── Roadmap
+├── API
+├── Plugin Development
+├── Hardware
+└── Contributing
+```
 
 ------------------------------------------------------------------------
 
-# Development Principles
-
--   Modular architecture
--   Local-first design
--   Privacy-focused
--   Offline-first where possible
--   Extensible plugin system
--   Professional code standards
--   Continuous refactoring
--   Automated testing
-
-------------------------------------------------------------------------
-
-# Community
-
-Community resources will be introduced as the project grows.
-
--   Discord Server (Planned)
--   Documentation Website (Planned)
--   Project Wiki (Planned)
-
-------------------------------------------------------------------------
-
-# License
-
-This project is currently under private development.
-
-A public open-source release is planned after the core platform reaches
-a stable milestone.
-
-------------------------------------------------------------------------
-
-# Author
+# 👨‍💻 Author
 
 **Quintin Janse van Rensburg**
 
-Project F.R.I.D.A.Y. is a long-term engineering project focused on
-building a complete personal AI ecosystem spanning desktop, mobile, and
-wearable platforms.
+Project F.R.I.D.A.Y. is being developed as a complete personal AI
+platform capable of evolving from a desktop assistant into a fully
+integrated ecosystem spanning computers, mobile devices and custom
+wearable hardware.
