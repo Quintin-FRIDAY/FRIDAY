@@ -99,7 +99,7 @@ AIEngine --> Ollama
 # 📊 Development Timeline
 
  | Version  | Status   | Highlights
- | -------- | -------- | ------------------------------------
+ | -------- | :--------: | ------------------------------------
  | v0.2.0   |  ✅     | Memory
  | v0.3.0   |  ✅     | Brain Improvements
  | v0.4.0   |  ✅     | Core Architecture
