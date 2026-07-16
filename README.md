@@ -98,14 +98,14 @@ AIEngine --> Ollama
 
 # 📊 Development Timeline
 
-  Version   Status   Highlights
-  --------- -------- ------------------------------------
-  v0.2.0    ✅       Memory
-  v0.3.0    ✅       Brain Improvements
-  v0.4.0    ✅       Core Architecture
-  v0.5.0    ✅       Audio & Speech Recognition
-  v0.6.0    ✅       Voice Pipeline & Brain Integration
-  v0.7.0    🚧       Text-to-Speech
+ | Version  | Status   | Highlights
+ | -------- | -------- | ------------------------------------
+ | v0.2.0   |  ✅     | Memory
+ | v0.3.0   |  ✅     | Brain Improvements
+ | v0.4.0   |  ✅     | Core Architecture
+ | v0.5.0   |  ✅     | Audio & Speech Recognition
+ | v0.6.0   |  ✅     | Voice Pipeline & Brain Integration
+ | v0.7.0   |  🚧     | Text-to-Speech
 
 ------------------------------------------------------------------------
 
